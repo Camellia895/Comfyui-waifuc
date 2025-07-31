@@ -564,7 +564,7 @@ class WaifucThreeStageSplitNode:
 
 class WaifucHeadCutOutNode:
     DISPLAY_NAME = "Waifuc 裁切出身体"
-    CATEGORY = "图像/Waifuc裁切"
+    CATEGORY = "Waifuc/Waifuc裁切"
     FUNCTION = "cut_out_head"
     RETURN_TYPES = ("IMAGE",)
     OUTPUT_IS_LIST = (True,)
