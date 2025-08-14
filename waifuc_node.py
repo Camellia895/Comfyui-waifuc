@@ -29,7 +29,7 @@ class ComfyInterruptAction(ProcessAction):
 # 节点 1: Waifuc 图像加载器 (之前版本已正确，保持不变)
 # ================================================================
 class WaifucLoader:
-    DISPLAY_NAME = "Waifuc 图像加载器"
+    DISPLAY_NAME = "Waifuc 图像爬取器(beta)"
     CATEGORY = "加载器/Waifuc"
     FUNCTION = "load_and_process"
     RETURN_TYPES = ("IMAGE",)
@@ -65,6 +65,46 @@ class WaifucLoader:
 
         if not pil_images:
             print("Waifuc加载器警告: 未找到或处理任何图像。")
+            return ([],)
+
+        tensors = [torch.from_numpy(np.array(img).astype(np.float32) / 255.0)[None,] for img in pil_images]
+        return (tensors,)
+
+# ================================================================
+# 节点 1.5: Waifuc 图像加载器 (beta) - 本地版
+# ================================================================
+class WaifucLocalLoader:
+    DISPLAY_NAME = "Waifuc 图像加载器(beta)"
+    CATEGORY = "加载器/Waifuc"
+    FUNCTION = "load_local_images"
+    RETURN_TYPES = ("IMAGE",)
+    OUTPUT_IS_LIST = (True,)
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "local_path": ("STRING", {"default": "", "multiline": False, "label": "本地图像文件夹路径"}),
+                "max_images": ("INT", {"default": 8, "min": 1, "max": 200, "step": 1, "label": "最大图像数"}),
+            },
+            "optional": WaifucProcessor.get_common_inputs()
+        }
+    
+    def load_local_images(self, local_path, max_images, **kwargs):
+        print(f"Waifuc本地加载器: 开始执行...")
+        if not os.path.isdir(local_path):
+            raise ValueError(f"指定的本地路径不是一个有效的文件夹: {local_path}")
+        
+        source = LocalSource(local_path)
+        
+        actions = WaifucProcessor.build_actions(**kwargs)
+        actions.append(FirstNSelectAction(max_images))
+        pipeline = source.attach(*actions)
+        
+        pil_images = [item.image for item in pipeline]
+
+        if not pil_images:
+            print("Waifuc本地加载器警告: 未找到或处理任何图像。")
             return ([],)
 
         tensors = [torch.from_numpy(np.array(img).astype(np.float32) / 255.0)[None,] for img in pil_images]
@@ -151,5 +191,13 @@ class WaifucProcessor:
 # ================================================================
 # ComfyUI 节点注册
 # ================================================================
-NODE_CLASS_MAPPINGS = { "WaifucLoader": WaifucLoader, "WaifucProcessor": WaifucProcessor, }
-NODE_DISPLAY_NAME_MAPPINGS = { "WaifucLoader": WaifucLoader.DISPLAY_NAME, "WaifucProcessor": WaifucProcessor.DISPLAY_NAME, }
+NODE_CLASS_MAPPINGS = { 
+    "WaifucLoader": WaifucLoader, 
+    "WaifucLocalLoader": WaifucLocalLoader, # 新增本地加载器
+    "WaifucProcessor": WaifucProcessor, 
+}
+NODE_DISPLAY_NAME_MAPPINGS = { 
+    "WaifucLoader": WaifucLoader.DISPLAY_NAME, 
+    "WaifucLocalLoader": WaifucLocalLoader.DISPLAY_NAME, # 新增本地加载器
+    "WaifucProcessor": WaifucProcessor.DISPLAY_NAME, 
+}
