@@ -1,1 +1,2 @@
-git+https://github.com/Camellia895/waifu.git
+git+https://github.com/Camellia895/waifu.git@main#egg=waifuc
+git+https://github.com/Camellia895/waifu.git@main#egg=waifuc[gpu]

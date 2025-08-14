@@ -1,0 +1,132 @@
+# Waifuc 操作代码 (V16 - 带详细备忘录)
+# ====================================================
+# 参考文档: https://deepghs.github.io/waifuc/main/tutorials-CN/index.html
+# source = GcharAutoSource('阿米娅') #有bug误用
+#source = ZerochanSource('surtr_(arknights)')
+source = DanbooruSource(['surtr_(arknights)'])
+
+# 在 '流水线模式' 和 '批处理模式' 下, 节点已为你准备好一个 `source` 对象。
+# 你只需要用 .attach() 将你的处理动作(Action)附加到它上面即可。
+# 最终的处理流程对象必须命名为 'input'。
+input = source.attach(
+    # 人像处理
+ClassFilterAction(['illustration', 'comic']),
+RatingFilterAction(['safe']),
+FilterSimilarAction('all'),
+PersonSplitAction(1),  # 将多人图像中每个人物裁出
+FaceCountAction(1),  # 丢弃裁出内容中没有人脸或有多个人脸的图像
+FilterSimilarAction('all'),  # 丢弃相似或重复的图像
+FirstNSelectAction(5),
+)
+input.export(SaveExporter(output)) # 输出 output=输入文件夹位置
+
+
+# ----------------------------------------------------
+# 常用操作 (Actions) - 用于 .attach()
+# ----------------------------------------------------
+
+# --- 1. 筛选类 (Filter) ---
+#   FirstNSelectAction(5)               # 只选择前5张图片
+#   MinSizeFilterAction(600,400)       # 筛选出尺寸 > 600x400 的图片(语法可能有错误)
+#   MinAreaFilterAction(800*800)        # 筛选出总像素 > 640000 的图片
+#   NoMonochromeAction()                # 移除灰度图
+#   OnlyMonochromeAction()              # 只保留灰度图
+#   ClassFilterAction(['illustration', 'comic']) # 按分类筛选 (illustration, comic, 3d, photograph)
+#   RatingFilterAction(['safe', 'r18']) # 按分级筛选 (safe, r18, r18g)
+#   FilterSimilarAction(model='deepdanbooru') # 移除视觉上相似的图片
+#   FaceCountAction(1)                  # 只保留检测到有1张脸的图片
+#   HeadCountAction(1)                  # 只保留检测到有1个头的图片
+#   PersonRatioAction(0.4)              # 保留人物占比超过40%的图片
+#   TagFilterAction(['1girl', 'solo'], ['cat_ears']) # 筛选标签: 必须包含'1girl'和'solo', 且至少包含'cat_ears'
+
+# --- 2. 变换与缩放类 (Transform & Resize) ---
+#   AlignMinSizeAction(800)             # 将图片短边缩放到800px, 保持比例
+#   AlignMaxSizeAction(1200)            # 将图片长边缩放到1200px, 保持比例
+#   AlignMaxAreaAction(1024*1024)       # 将图片总像素缩放到约一百万, 保持比例
+#   PaddingAlignAction((1024, 768))     # 将图片置于 1024x768 的黑色背景中央
+#   ModeConvertAction('RGB')            # 转换图片模式, 'L'为灰度, 'RGB'为彩色
+#   MirrorAction()                      # 随机对一半的图片进行水平镜像
+
+# --- 3. 裁剪与分割类 (Crop & Split) (常用)---
+#   PersonSplitAction()                 # 将图中的每个人物分别裁剪为独立的图片
+#   HeadCutOutAction()                  # 仅裁剪出图中的头部区域
+#   ThreeStageSplitAction()             # 一种更精准的人物分割模型(常用)
+
+# --- 4. 标签与元数据类 (Tagging & Metadata) ---
+#   TaggingAction(model='deepdanbooru') # 为图片自动打标 (需要下载模型)
+#   RandomFilenameAction(ext='.png')    # 重命名文件为随机字符串, 后缀为.png
+#   FileExtAction(ext='.webp')          # 更改文件后缀 (导出时生效)
+#   CCIPAction(model='caformer_b36_in21k') # 计算CLIP特征值, 用于去重
+
+# --- 5. 标签清理类 (Tag Cleanup) ---
+#   TagDropAction(['lowres', 'bad_anatomy']) # 丢弃带有这些标签的图片
+#   TagOverlapDropAction()              # 移除具有重叠标签的图片（通常是相似内容）
+#   TagRemoveUnderlineAction()          # 移除标签中的下划线, 如 'genshin_impact' -> 'genshin impact'
+
+
+# ----------------------------------------------------
+#                   数据源 (Sources) 
+# ====================================================
+# - 仅在“网页爬取模式”下需要手动创建 source。
+# - 在 '流水线' 和 '批处理' 模式下, source 已由节点自动提供。
+# - 网站描述参考: https://deepghs.github.io/waifuc/main/tutorials-CN/crawl_images/index.html
+
+# ----------------------------------------------------
+# A. 如何在“网页爬取模式”下使用
+# ----------------------------------------------------
+# 1. 取消下面一行的注释
+# source = DanbooruSource(['genshin_impact', '1girl', 'solo', 'highres'])
+# 2. 将 'DanbooruSource' 替换为你想用的网站源 (见下方列表)。
+# 3. 修改方括号内的搜索标签或关键词。
+# 4. 如果需要登录, 请在括号内添加 username 和 password 参数。(注意,anbooruSource一般不支持大于三个tagger的搜索)
+# 例如: DanbooruSource(['genshin_impact'], username='your_username', password='your_password')
+
+# ----------------------------------------------------
+# B. 常用网站源详解
+# ----------------------------------------------------
+
+# --- Danbooru / Safebooru ---
+#   用法: DanbooruSource(['your', 'tags', 'here'])
+#         SafebooruSource(['your', 'tags', 'here'])
+
+# --- Zerochan ---
+#     - select: 图片尺寸, 'large' (默认, 速度快), 'full' (最高质量原图)。
+#     - username/password: 登录后可访问更高质量的图片。
+#   用法: ZerochanSource('Genshin Impact', select='full', username='your_username', password='your_password')
+
+# --- Pixiv ---
+#   用法: PixivSearchSource(['ganyu', 'genshin_impact'], username='your_username', password='your_password') # 关键词搜索
+#         PixivUserSource(123456, limit=20, username='...', password='...') # 获取指定用户ID的最新20张图
+#         PixivRankingSource(username='...', password='...') # 获取排行榜图片
+
+# ----------------------------------------------------
+# C. 其他可用网站源列表 (用法类似)
+# ----------------------------------------------------
+
+# --- 综合性 Booru 图库 (特点: 图多量大，标签风格各异) ---
+#   ATFBooruSource(['tags'])        # 主要面向 3D NSFW 内容。
+#   GelbooruSource(['tags'])        # 最庞大的图库之一，内容混杂，标签可能不规范。
+#   KonachanSource(['tags'])        # 高质量图库，分为全年龄的 .net 和 NSFW 的 .com。
+#   KonachanNetSource(['tags'])     # Konachan 的全年龄版本。
+#   LolibooruSource(['tags'])       # Konachan 的子站，专注于特定主题。
+#   Rule34Source(['tags'])          # 以 NSFW 内容闻名的大型图库。
+#   SafebooruOrgSource(['tags'])    # Gelbooru 的安全版本。
+#   SankakuSource(['tags'])         # 巨大的图库，包含大量NSFW内容和偶像照片。
+#   TBIBSource(['tags'])            # The Big ImageBoard，一个通用的Booru网站。
+#   XbooruSource(['tags'])          # Rule34 的一个分支。
+#   YandeSource(['tags'])           # 高分辨率图库，经常发布未压缩或未审查的扫描图。
+#   HypnoHubSource(['tags'])        # 专注于特定催眠主题的NSFW图库。
+#   PahealSource(['tags'])          # Rule34 的另一个分支。
+
+# --- 主题性图库 ---
+#   AnimePicturesSource(['tags'])   # 以极高的图片质量和严格的审核标准著称。
+#   DerpibooruSource(['tags'])      # “彩虹小马”主题的最大同人图库。
+#   E621Source(['tags'])            # 最大的兽人(Furry)主题 NSFW 图库。
+#   E926Source(['tags'])            # E621 的全年龄安全版本。
+#   FurbooruSource(['tags'])        # Derpibooru 的姐妹站，兽人(Furry)主题。
+
+# --- 其他类型网站 ---
+#   WallHavenSource(['keyword'])    # 高质量壁纸网站，包含各种类型而不仅限于动漫。
+#   DuitangSource('keyword')        # 堆糖，中国的图片分享社区，类似Pinterest。
+#   Huashi6Source('keyword')        # 画师通，中国的画师作品分享平台。
+
