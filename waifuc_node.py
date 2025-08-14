@@ -4,8 +4,9 @@ import numpy as np
 from PIL import Image
 import comfy.model_management
 from typing import Iterator
-import tempfile # [新增] 导入临时文件/目录模块
-import os       # [新增] 导入操作系统路径模块
+import tempfile
+import os
+import json # [新增] 导入 json 模块
 
 from waifuc.action import ProcessAction
 from waifuc.model import ImageItem
@@ -189,15 +190,76 @@ class WaifucProcessor:
         return (tensors,)
 
 # ================================================================
+# 节点 3: Waifuc 图像处理器 (beta) - 新增
+# ================================================================
+class WaifucImageProcessorNode:
+    DISPLAY_NAME = "Waifuc 图像处理器(beta)"
+    CATEGORY = "图像/Waifuc处理"
+    FUNCTION = "process_restored_images"
+    RETURN_TYPES = ("IMAGE",)
+    OUTPUT_IS_LIST = (True,)
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "image_batch": ("IMAGE",),
+                "padding_info_json": ("STRING", {"forceInput": True}),
+            },
+            "optional": WaifucProcessor.get_common_inputs()
+        }
+
+    def process_restored_images(self, image_batch: torch.Tensor, padding_info_json: str, **kwargs):
+        # 1. 还原图像
+        try:
+            original_dims = json.loads(padding_info_json)
+        except (json.JSONDecodeError, TypeError):
+            print("WaifucImageProcessorNode: JSON 解析失败或格式不正确，跳过还原。")
+            original_dims = []
+
+        if len(original_dims) != image_batch.shape[0]:
+            print("WaifucImageProcessorNode: JSON 信息与图像批次数量不匹配，跳过还原。")
+            restored_pil_images = [Image.fromarray((image_batch[i].cpu().numpy() * 255).astype(np.uint8)) for i in range(image_batch.shape[0])]
+        else:
+            restored_pil_images = []
+            for i, img_tensor in enumerate(image_batch):
+                original_h = original_dims[i]["height"]
+                original_w = original_dims[i]["width"]
+                cropped_img_tensor = img_tensor[:original_h, :original_w, :]
+                pil_img = Image.fromarray((cropped_img_tensor.cpu().numpy() * 255).astype(np.uint8))
+                restored_pil_images.append(pil_img)
+
+        # 2. 处理图像
+        with tempfile.TemporaryDirectory() as temp_dir:
+            for i, pil_img in enumerate(restored_pil_images):
+                pil_img.save(os.path.join(temp_dir, f"image_{i}.png"))
+
+            source = LocalSource(temp_dir)
+            actions = WaifucProcessor.build_actions(**kwargs)
+            pipeline = source.attach(*actions)
+            processed_pil_images = [item.image for item in pipeline]
+
+        if not processed_pil_images:
+            print("WaifucImageProcessorNode: 没有图像通过筛选，已输出1x1黑色占位图。")
+            placeholder_img = Image.new('RGB', (1, 1), 'black')
+            tensors = [torch.from_numpy(np.array(placeholder_img).astype(np.float32) / 255.0)[None,]]
+        else:
+            tensors = [torch.from_numpy(np.array(img).astype(np.float32) / 255.0)[None,] for img in processed_pil_images]
+            
+        return (tensors,)
+
+# ================================================================
 # ComfyUI 节点注册
 # ================================================================
 NODE_CLASS_MAPPINGS = { 
     "WaifucLoader": WaifucLoader, 
-    "WaifucLocalLoader": WaifucLocalLoader, # 新增本地加载器
+    "WaifucLocalLoader": WaifucLocalLoader,
     "WaifucProcessor": WaifucProcessor, 
+    "WaifucImageProcessorNode": WaifucImageProcessorNode, # 注册新节点
 }
 NODE_DISPLAY_NAME_MAPPINGS = { 
     "WaifucLoader": WaifucLoader.DISPLAY_NAME, 
-    "WaifucLocalLoader": WaifucLocalLoader.DISPLAY_NAME, # 新增本地加载器
+    "WaifucLocalLoader": WaifucLocalLoader.DISPLAY_NAME,
     "WaifucProcessor": WaifucProcessor.DISPLAY_NAME, 
+    "WaifucImageProcessorNode": WaifucImageProcessorNode.DISPLAY_NAME, # 注册新节点
 }
