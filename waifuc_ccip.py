@@ -23,14 +23,14 @@ class ComfyInterruptAction(ProcessAction):
         return item
 
 # ================================================================
-# 自定义 Source：内存中的PIL图像源
+# 自定义 Source：内存中的PIL图像源 (直接实现 __iter__)
 # ================================================================
 class InMemoryPILSource(BaseDataSource):
     def __init__(self, pil_images: List[Image.Image]):
         super().__init__()
         self.pil_images = pil_images
 
-    def _iter(self) -> Iterator[ImageItem]: # [修正] 将 _iter_data 改为 _iter
+    def __iter__(self) -> Iterator[ImageItem]: # [修正] 直接实现 __iter__
         for img in self.pil_images:
             yield ImageItem(image=img)
 
@@ -127,7 +127,7 @@ class WaifucAdvancedCCIPNode:
                 "eps": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.01, "label": "DBSCAN/OPTICS eps (可选)"}),
                 "min_samples": ("INT", {"default": 5, "min": 1, "max": 50, "step": 1, "label": "DBSCAN/OPTICS min_samples (可选)"}),
                 "model": (["ccip-caformer-24-randaug-pruned"], {"default": "ccip-caformer-24-randaug-pruned", "label": "CCIP模型"}),
-                "threshold": ("FLOAT", {"default": 0.5, "min": 0.0, "max": 1.0, "step": 0.01, "label": "CCIP相似度阈值 (可选)"}),
+                "threshold": ("FLOAT", {"default": 0.15, "min": 0.0, "max": 1.0, "step": 0.01, "label": "CCIP相似度阈值 (可选)"}),
             }
         }
 

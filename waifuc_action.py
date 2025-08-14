@@ -466,7 +466,7 @@ class WaifucNoMonochromeNode:
         return WaifucActionHelper.process_with_actions(images, actions)
 
 class WaifucClassFilterNode:
-    DISPLAY_NAME = "Waifuc 按分类过滤"
+    DISPLAY_NAME = "Waifuc 按分类过滤(illustration, bangumi, comic, 3d)"
     CATEGORY = "Waifuc/Waifuc筛选"
     FUNCTION = "filter_class"
     RETURN_TYPES = ("IMAGE",)

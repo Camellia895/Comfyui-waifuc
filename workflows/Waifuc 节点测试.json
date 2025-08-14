@@ -1,0 +1,2575 @@
+{
+  "id": "6af4b129-79bb-4311-a5cd-dd7938ea1856",
+  "revision": 0,
+  "last_node_id": 388,
+  "last_link_id": 585,
+  "nodes": [
+    {
+      "id": 245,
+      "type": "WaifucLoader",
+      "pos": [
+        -2180,
+        770
+      ],
+      "size": [
+        400,
+        357
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            431,
+            444
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucLoader",
+        "widget_ue_connectable": {
+          "source_site": true,
+          "tags": true,
+          "max_images": true,
+          "align_min_size": true,
+          "processing_toggles": true,
+          "enable_monochrome_filter": true,
+          "enable_class_filter": true,
+          "enable_similar_filter": true,
+          "enable_person_split": true,
+          "face_count_filter": true,
+          "enable_ccip_filter": true,
+          "enable_tagging": true
+        }
+      },
+      "widgets_values": [
+        "Danbooru",
+        "surtr_(arknights), solo",
+        40,
+        1024,
+        false,
+        false,
+        false,
+        true,
+        false,
+        1,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 246,
+      "type": "PreviewImage",
+      "pos": [
+        -1760,
+        870
+      ],
+      "size": [
+        370,
+        350
+      ],
+      "flags": {},
+      "order": 37,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "图像",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 431
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 247,
+      "type": "WaifucAlignMinSizeNode",
+      "pos": [
+        -270,
+        1280
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucAlignMinSizeNode",
+        "widget_ue_connectable": {
+          "min_size": true
+        }
+      },
+      "widgets_values": [
+        768
+      ]
+    },
+    {
+      "id": 248,
+      "type": "WaifucModeConvertNode",
+      "pos": [
+        10,
+        920
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucModeConvertNode",
+        "widget_ue_connectable": {
+          "mode": true,
+          "background": true
+        }
+      },
+      "widgets_values": [
+        "RGB",
+        "white"
+      ]
+    },
+    {
+      "id": 250,
+      "type": "WaifucNoMonochromeNode",
+      "pos": [
+        10,
+        610
+      ],
+      "size": [
+        170.05624389648438,
+        26
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucNoMonochromeNode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 251,
+      "type": "WaifucClassFilterNode",
+      "pos": [
+        10,
+        760
+      ],
+      "size": [
+        210,
+        117
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucClassFilterNode",
+        "widget_ue_connectable": {
+          "allowed_classes": true,
+          "threshold": true
+        }
+      },
+      "widgets_values": [
+        "illustration, bangumi",
+        0.75
+      ]
+    },
+    {
+      "id": 252,
+      "type": "WaifucFaceCountNode",
+      "pos": [
+        30,
+        1210
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucFaceCountNode",
+        "widget_ue_connectable": {
+          "min_count": true,
+          "max_count": true,
+          "conf_threshold": true
+        }
+      },
+      "widgets_values": [
+        1,
+        1,
+        0.25
+      ]
+    },
+    {
+      "id": 253,
+      "type": "WaifucOnlyMonochromeNode",
+      "pos": [
+        20,
+        680
+      ],
+      "size": [
+        184.05624389648438,
+        26
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucOnlyMonochromeNode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 254,
+      "type": "WaifucRatingFilterNode",
+      "pos": [
+        -600,
+        1070
+      ],
+      "size": [
+        306.3316345214844,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucRatingFilterNode",
+        "widget_ue_connectable": {
+          "allowed_ratings": true,
+          "threshold": true
+        }
+      },
+      "widgets_values": [
+        "safe",
+        0.75
+      ]
+    },
+    {
+      "id": 255,
+      "type": "WaifucHeadCountNode",
+      "pos": [
+        20,
+        1050
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucHeadCountNode",
+        "widget_ue_connectable": {
+          "min_count": true,
+          "max_count": true,
+          "conf_threshold": true
+        }
+      },
+      "widgets_values": [
+        1,
+        1,
+        0.3
+      ]
+    },
+    {
+      "id": 256,
+      "type": "WaifucPersonRatioNode",
+      "pos": [
+        -290,
+        950
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucPersonRatioNode",
+        "widget_ue_connectable": {
+          "min_ratio": true,
+          "conf_threshold": true
+        }
+      },
+      "widgets_values": [
+        0.4,
+        0.3
+      ]
+    },
+    {
+      "id": 257,
+      "type": "WaifucMinSizeFilterNode",
+      "pos": [
+        -570,
+        960
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucMinSizeFilterNode",
+        "widget_ue_connectable": {
+          "min_size": true
+        }
+      },
+      "widgets_values": [
+        512
+      ]
+    },
+    {
+      "id": 258,
+      "type": "WaifucMinSizeFilterNode",
+      "pos": [
+        -280,
+        820
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucMinSizeFilterNode",
+        "widget_ue_connectable": {
+          "min_size": true
+        }
+      },
+      "widgets_values": [
+        512
+      ]
+    },
+    {
+      "id": 259,
+      "type": "WaifucMinAreaFilterNode",
+      "pos": [
+        -590,
+        830
+      ],
+      "size": [
+        272.732421875,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucMinAreaFilterNode",
+        "widget_ue_connectable": {
+          "min_equivalent_size": true
+        }
+      },
+      "widgets_values": [
+        512
+      ]
+    },
+    {
+      "id": 261,
+      "type": "WaifucTagFilterNode",
+      "pos": [
+        -270,
+        620
+      ],
+      "size": [
+        240,
+        141
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucTagFilterNode",
+        "widget_ue_connectable": {
+          "tags_to_check": true,
+          "method": true,
+          "reversed": true
+        }
+      },
+      "widgets_values": [
+        "",
+        "wd14_v3_swinv2",
+        true
+      ]
+    },
+    {
+      "id": 262,
+      "type": "WaifucPersonSplitNode",
+      "pos": [
+        -270,
+        1080
+      ],
+      "size": [
+        270,
+        154
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucPersonSplitNode",
+        "widget_ue_connectable": {
+          "level": true,
+          "conf_threshold": true,
+          "iou_threshold": true,
+          "keep_original": true,
+          "keep_origin_tags": true
+        }
+      },
+      "widgets_values": [
+        "m",
+        0.3,
+        0.5,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 263,
+      "type": "WaifucThreeStageSplitNode",
+      "pos": [
+        -1050,
+        820
+      ],
+      "size": [
+        286.0859375,
+        202
+      ],
+      "flags": {},
+      "order": 36,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 441
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            440
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucThreeStageSplitNode",
+        "widget_ue_connectable": {
+          "split_person": true,
+          "person_conf_threshold": true,
+          "head_conf_threshold": true,
+          "head_scale": true,
+          "split_eyes": true,
+          "eye_scale": true,
+          "keep_origin_tags": true
+        }
+      },
+      "widgets_values": [
+        true,
+        0.3,
+        0.5,
+        1.5,
+        true,
+        2.4,
+        false
+      ]
+    },
+    {
+      "id": 264,
+      "type": "WaifucHeadCutOutNode",
+      "pos": [
+        -600,
+        1190
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucHeadCutOutNode",
+        "widget_ue_connectable": {
+          "model_name": true,
+          "kp_threshold": true,
+          "conf_threshold": true
+        }
+      },
+      "widgets_values": [
+        "face_detect_v1.4_s",
+        0.3,
+        0.25
+      ]
+    },
+    {
+      "id": 265,
+      "type": "WaifucHeadCoverNode",
+      "pos": [
+        -870,
+        640
+      ],
+      "size": [
+        272.0562438964844,
+        126
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "censored_image",
+          "name": "censored_image",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucHeadCoverNode",
+        "widget_ue_connectable": {
+          "color": true,
+          "scale": true,
+          "conf_threshold": true
+        }
+      },
+      "widgets_values": [
+        "random",
+        1.1,
+        0.3
+      ]
+    },
+    {
+      "id": 266,
+      "type": "WaifucTaggerNode",
+      "pos": [
+        -580,
+        620
+      ],
+      "size": [
+        270.060546875,
+        150
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "label": "tags_text",
+          "name": "tags_text",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucTaggerNode",
+        "widget_ue_connectable": {
+          "method": true,
+          "general_threshold": true,
+          "character_threshold": true,
+          "force_rerun": true
+        }
+      },
+      "widgets_values": [
+        "deepdanbooru",
+        0.35,
+        0.85,
+        true
+      ]
+    },
+    {
+      "id": 268,
+      "type": "LoadImage",
+      "pos": [
+        -1340,
+        820
+      ],
+      "size": [
+        270,
+        314.00006103515625
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            441
+          ]
+        },
+        {
+          "label": "遮罩",
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.47",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "20F9691A5E627268125D9699B41D72F6.png",
+        "image"
+      ]
+    },
+    {
+      "id": 269,
+      "type": "PreviewImage",
+      "pos": [
+        -740,
+        820
+      ],
+      "size": [
+        140,
+        246.00006103515625
+      ],
+      "flags": {},
+      "order": 46,
+      "mode": 4,
+      "inputs": [
+        {
+          "label": "图像",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 440
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.47",
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 275,
+      "type": "WaifucLoadImagesFromPathNode",
+      "pos": [
+        -1730,
+        1330
+      ],
+      "size": [
+        272.0562438964844,
+        58
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucLoadImagesFromPathNode"
+      },
+      "widgets_values": [
+        "D:\\ComfyUI\\ccip测试文件夹"
+      ]
+    },
+    {
+      "id": 277,
+      "type": "SaveImage",
+      "pos": [
+        -1760,
+        770
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 38,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 444
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.47",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 282,
+      "type": "ImpactImageBatchToImageList",
+      "pos": [
+        -2350,
+        1300
+      ],
+      "size": [
+        202.54061889648438,
+        26
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-impact-pack",
+        "ver": "3d90c579e8da256c4667c0af4519f43ba0039a21",
+        "Node name for S&R": "ImpactImageBatchToImageList"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 286,
+      "type": "WaifucLocalLoader",
+      "pos": [
+        -1740,
+        1440
+      ],
+      "size": [
+        306.083984375,
+        298
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            474
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "dee26041255009d501865b6a207fdf766bf697cc",
+        "Node name for S&R": "WaifucLocalLoader"
+      },
+      "widgets_values": [
+        "D:\\ComfyUI\\ccip测试文件夹\\目标",
+        36,
+        1984,
+        false,
+        false,
+        false,
+        false,
+        false,
+        1,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 295,
+      "type": "ImageListToImageBatch",
+      "pos": [
+        -1380,
+        1440
+      ],
+      "size": [
+        211.482421875,
+        46
+      ],
+      "flags": {},
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 474
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE_BATCH",
+          "type": "IMAGE",
+          "links": [
+            561,
+            575
+          ]
+        },
+        {
+          "name": "PADDING_INFO_JSON",
+          "type": "STRING",
+          "links": [
+            562,
+            576
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "c55ebeba87c03b85dcdb46c72390eb22aedc9d5d",
+        "Node name for S&R": "ImageListToImageBatch"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 338,
+      "type": "WaifucImageProcessorNode",
+      "pos": [
+        -1120,
+        1440
+      ],
+      "size": [
+        306.083984375,
+        270
+      ],
+      "flags": {},
+      "order": 47,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_batch",
+          "type": "IMAGE",
+          "link": 561
+        },
+        {
+          "name": "padding_info_json",
+          "type": "STRING",
+          "link": 562
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            566,
+            573
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucImageProcessorNode"
+      },
+      "widgets_values": [
+        1024,
+        true,
+        true,
+        true,
+        true,
+        true,
+        1,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 339,
+      "type": "Note",
+      "pos": [
+        -1380,
+        1520
+      ],
+      "size": [
+        210,
+        140
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "统一列表尺寸，但是不裁剪。\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 340,
+      "type": "PreviewImage",
+      "pos": [
+        -780,
+        1440
+      ],
+      "size": [
+        140,
+        26
+      ],
+      "flags": {},
+      "order": 52,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 566
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.47",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 362,
+      "type": "WaifucMinAreaFilterNode",
+      "pos": [
+        -970,
+        1900
+      ],
+      "size": [
+        272.732421875,
+        58
+      ],
+      "flags": {},
+      "order": 50,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 581
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            582
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucMinAreaFilterNode"
+      },
+      "widgets_values": [
+        512
+      ]
+    },
+    {
+      "id": 363,
+      "type": "WaifucMinSizeFilterNode",
+      "pos": [
+        -430,
+        1880
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucMinSizeFilterNode"
+      },
+      "widgets_values": [
+        512
+      ]
+    },
+    {
+      "id": 364,
+      "type": "WaifucRatingFilterNode",
+      "pos": [
+        -460,
+        1990
+      ],
+      "size": [
+        306.3316345214844,
+        82
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucRatingFilterNode"
+      },
+      "widgets_values": [
+        "safe",
+        0.75
+      ]
+    },
+    {
+      "id": 365,
+      "type": "WaifucNoMonochromeNode",
+      "pos": [
+        150,
+        1530
+      ],
+      "size": [
+        170.05624389648438,
+        26
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucNoMonochromeNode"
+      }
+    },
+    {
+      "id": 366,
+      "type": "WaifucOnlyMonochromeNode",
+      "pos": [
+        160,
+        1600
+      ],
+      "size": [
+        184.05624389648438,
+        26
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucOnlyMonochromeNode"
+      }
+    },
+    {
+      "id": 367,
+      "type": "WaifucMinSizeFilterNode",
+      "pos": [
+        -440,
+        1760
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucMinSizeFilterNode"
+      },
+      "widgets_values": [
+        512
+      ]
+    },
+    {
+      "id": 368,
+      "type": "WaifucPersonRatioNode",
+      "pos": [
+        -760,
+        1690
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 53,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 573
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucPersonRatioNode"
+      },
+      "widgets_values": [
+        0.4,
+        0.3
+      ]
+    },
+    {
+      "id": 369,
+      "type": "WaifucTagFilterNode",
+      "pos": [
+        -1120,
+        2100
+      ],
+      "size": [
+        240,
+        141
+      ],
+      "flags": {},
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 583
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            584
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucTagFilterNode"
+      },
+      "widgets_values": [
+        "blue hair",
+        "wd14_v3_swinv2",
+        true
+      ]
+    },
+    {
+      "id": 370,
+      "type": "WaifucHeadCoverNode",
+      "pos": [
+        -770,
+        1510
+      ],
+      "size": [
+        272.0562438964844,
+        126
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "censored_image",
+          "name": "censored_image",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucHeadCoverNode"
+      },
+      "widgets_values": [
+        "random",
+        1.1,
+        0.3
+      ]
+    },
+    {
+      "id": 371,
+      "type": "WaifucTaggerNode",
+      "pos": [
+        -410,
+        1540
+      ],
+      "size": [
+        270.060546875,
+        150
+      ],
+      "flags": {},
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "label": "tags_text",
+          "name": "tags_text",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucTaggerNode"
+      },
+      "widgets_values": [
+        "deepdanbooru",
+        0.35,
+        0.85,
+        true
+      ]
+    },
+    {
+      "id": 372,
+      "type": "WaifucPersonSplitNode",
+      "pos": [
+        -1440,
+        2050
+      ],
+      "size": [
+        270,
+        154
+      ],
+      "flags": {},
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 578
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucPersonSplitNode"
+      },
+      "widgets_values": [
+        "m",
+        0.3,
+        0.5,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 373,
+      "type": "WaifucHeadCutOutNode",
+      "pos": [
+        -1440,
+        2240
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 42,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 579
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucHeadCutOutNode"
+      },
+      "widgets_values": [
+        "face_detect_v1.4_s",
+        0.3,
+        0.25
+      ]
+    },
+    {
+      "id": 374,
+      "type": "WaifucFaceCountNode",
+      "pos": [
+        -1430,
+        2390
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 43,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 580
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucFaceCountNode"
+      },
+      "widgets_values": [
+        1,
+        1,
+        0.25
+      ]
+    },
+    {
+      "id": 375,
+      "type": "WaifucAlignMinSizeNode",
+      "pos": [
+        -450,
+        2140
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucAlignMinSizeNode"
+      },
+      "widgets_values": [
+        768
+      ]
+    },
+    {
+      "id": 376,
+      "type": "WaifucClassFilterNode",
+      "pos": [
+        -1430,
+        2530
+      ],
+      "size": [
+        210,
+        117
+      ],
+      "flags": {},
+      "order": 45,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 585
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucClassFilterNode"
+      },
+      "widgets_values": [
+        "illustration, bangumi",
+        0.75
+      ]
+    },
+    {
+      "id": 377,
+      "type": "WaifucModeConvertNode",
+      "pos": [
+        150,
+        1840
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucModeConvertNode"
+      },
+      "widgets_values": [
+        "RGB",
+        "white"
+      ]
+    },
+    {
+      "id": 378,
+      "type": "WaifucHeadCountNode",
+      "pos": [
+        -1110,
+        2380
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucHeadCountNode"
+      },
+      "widgets_values": [
+        1,
+        1,
+        0.3
+      ]
+    },
+    {
+      "id": 379,
+      "type": "PreviewImage",
+      "pos": [
+        -1140,
+        1800
+      ],
+      "size": [
+        140,
+        246.00006103515625
+      ],
+      "flags": {},
+      "order": 49,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "图像",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 572
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.47",
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 380,
+      "type": "LoadImage",
+      "pos": [
+        -1740,
+        1810
+      ],
+      "size": [
+        270,
+        314.00006103515625
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            571,
+            578,
+            579,
+            580,
+            583,
+            585
+          ]
+        },
+        {
+          "label": "遮罩",
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.47",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "20F9691A5E627268125D9699B41D72F6.png",
+        "image"
+      ]
+    },
+    {
+      "id": 381,
+      "type": "WaifucThreeStageSplitNode",
+      "pos": [
+        -1450,
+        1800
+      ],
+      "size": [
+        286.0859375,
+        202
+      ],
+      "flags": {},
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 571
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            572,
+            581
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucThreeStageSplitNode"
+      },
+      "widgets_values": [
+        true,
+        0.3,
+        0.5,
+        1.5,
+        true,
+        2.4,
+        false
+      ]
+    },
+    {
+      "id": 383,
+      "type": "WaifucCCIPNode",
+      "pos": [
+        -1110,
+        1350
+      ],
+      "size": [
+        193.39413452148438,
+        46
+      ],
+      "flags": {},
+      "order": 48,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 575
+        },
+        {
+          "name": "padding_info_json",
+          "type": "STRING",
+          "link": 576
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": [
+            577
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucCCIPNode"
+      }
+    },
+    {
+      "id": 384,
+      "type": "PreviewImage",
+      "pos": [
+        -790,
+        1350
+      ],
+      "size": [
+        140,
+        26
+      ],
+      "flags": {},
+      "order": 54,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 577
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.47",
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 385,
+      "type": "WaifucAdvancedCCIPNode",
+      "pos": [
+        -680,
+        2310
+      ],
+      "size": [
+        294.6080017089844,
+        310
+      ],
+      "flags": {},
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "padding_info_json",
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "anchor_images",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "anchor_padding_info_json",
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucAdvancedCCIPNode"
+      },
+      "widgets_values": [
+        15,
+        5,
+        0.6,
+        0.3,
+        0.5,
+        0.5,
+        5,
+        "ccip-caformer-24-randaug-pruned",
+        0.15
+      ]
+    },
+    {
+      "id": 386,
+      "type": "PreviewImage",
+      "pos": [
+        -640,
+        1870
+      ],
+      "size": [
+        140,
+        246.00006103515625
+      ],
+      "flags": {},
+      "order": 55,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "图像",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 582
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.47",
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 387,
+      "type": "PreviewImage",
+      "pos": [
+        -870,
+        2100
+      ],
+      "size": [
+        140,
+        26
+      ],
+      "flags": {},
+      "order": 51,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 584
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.47",
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 388,
+      "type": "WaifucLoader",
+      "pos": [
+        -2160,
+        1510
+      ],
+      "size": [
+        400,
+        352
+      ],
+      "flags": {},
+      "order": 34,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "shape": 6,
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Camellia895/Comfyui-waifuc",
+        "ver": "4b5c69237f9c09bedec196964cd852354f685aac",
+        "Node name for S&R": "WaifucLoader"
+      },
+      "widgets_values": [
+        "Danbooru",
+        "surtr_(arknights), solo",
+        8,
+        768,
+        true,
+        true,
+        true,
+        true,
+        true,
+        1,
+        true,
+        true
+      ]
+    }
+  ],
+  "links": [
+    [
+      431,
+      245,
+      0,
+      246,
+      0,
+      "IMAGE"
+    ],
+    [
+      440,
+      263,
+      0,
+      269,
+      0,
+      "IMAGE"
+    ],
+    [
+      441,
+      268,
+      0,
+      263,
+      0,
+      "IMAGE"
+    ],
+    [
+      444,
+      245,
+      0,
+      277,
+      0,
+      "IMAGE"
+    ],
+    [
+      474,
+      286,
+      0,
+      295,
+      0,
+      "IMAGE"
+    ],
+    [
+      561,
+      295,
+      0,
+      338,
+      0,
+      "IMAGE"
+    ],
+    [
+      562,
+      295,
+      1,
+      338,
+      1,
+      "STRING"
+    ],
+    [
+      566,
+      338,
+      0,
+      340,
+      0,
+      "IMAGE"
+    ],
+    [
+      571,
+      380,
+      0,
+      381,
+      0,
+      "IMAGE"
+    ],
+    [
+      572,
+      381,
+      0,
+      379,
+      0,
+      "IMAGE"
+    ],
+    [
+      573,
+      338,
+      0,
+      368,
+      0,
+      "IMAGE"
+    ],
+    [
+      575,
+      295,
+      0,
+      383,
+      0,
+      "IMAGE"
+    ],
+    [
+      576,
+      295,
+      1,
+      383,
+      1,
+      "STRING"
+    ],
+    [
+      577,
+      383,
+      0,
+      384,
+      0,
+      "IMAGE"
+    ],
+    [
+      578,
+      380,
+      0,
+      372,
+      0,
+      "IMAGE"
+    ],
+    [
+      579,
+      380,
+      0,
+      373,
+      0,
+      "IMAGE"
+    ],
+    [
+      580,
+      380,
+      0,
+      374,
+      0,
+      "IMAGE"
+    ],
+    [
+      581,
+      381,
+      0,
+      362,
+      0,
+      "IMAGE"
+    ],
+    [
+      582,
+      362,
+      0,
+      386,
+      0,
+      "IMAGE"
+    ],
+    [
+      583,
+      380,
+      0,
+      369,
+      0,
+      "IMAGE"
+    ],
+    [
+      584,
+      369,
+      0,
+      387,
+      0,
+      "IMAGE"
+    ],
+    [
+      585,
+      380,
+      0,
+      376,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "还在改进，已经实现了筛选目标角色的功能。但是还是有些问题",
+      "bounding": [
+        -690,
+        2240,
+        314.6080322265625,
+        393.6000061035156
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "ds": {
+      "scale": 0.40909090909092,
+      "offset": [
+        2698.907572581555,
+        -795.9094932811372
+      ]
+    },
+    "links_added_by_ue": [],
+    "frontendVersion": "1.23.4",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
